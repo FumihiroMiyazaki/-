@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    // Page init event
+    document.addEventListener('init', function(event) {
+      var page = event.target;
+
+      if (page.matches('#index')) {
+        localStorage.setItem('test', 123);
+        page.querySelector('#init-menu-btn').onclick = function() {
+          document.querySelector('#navigator').pushPage('init_menu.html');
+        };
+
+        page.querySelector('#push-button2').onclick = function() {
+          document.querySelector('#navigator').pushPage('page3.html');
+        };
+        
+        page.querySelector('#push-button3').onclick = function() {
+          document.querySelector('#navigator').pushPage('page4.html');
+        };
+        
+        page.querySelector('#push-button4').onclick = function() {
+          document.querySelector('#navigator').pushPage('page5.html');
+        };
+
+      } else if (page.matches('#init-menu')) {
+        alert(localStorage.getItem('test'));
+        page.querySelector('#pop-button').onclick = function() {
+          document.querySelector('#navigator').popPage();
+        };
+
+      } else if (page.matches('#third-page')) {
+
+        page.querySelector('#pop-button').onclick = function() {
+          document.querySelector('#navigator').popPage();
+        };
+
+      } else if (page.matches('#fourth-page')) {
+
+        page.querySelector('#pop-button').onclick = function() {
+          document.querySelector('#navigator').popPage();
+        };
+
+      } else if (page.matches('#fifth-page')) {
+
+        page.querySelector('#pop-button').onclick = function() {
+          document.querySelector('#navigator').popPage();
+        };
+
+      }
+    });
+  </script>
+</head>
+<body>
+  <ons-navigator id="navigator" page="index.html"></ons-navigator>
+
+  <ons-template id="index.html">
+    <ons-page id="index">
+      <ons-toolbar>
+        <div class="center">消火器点検アプリ</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <br />
+        <br />
+        <br />
+        <ons-button modifier="large" id="init-menu-btn">点検前の初期設定</ons-button><br/><br/>
+        <ons-button modifier="large" id="push-button2">消火器点検を実施する</ons-button><br/><br/>
+        <ons-button modifier="large" id="push-button3">点検結果を印刷用に出力する</ons-button><br/><br/>
+        <ons-button modifier="large" id="push-button4">操作ガイド</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="init_menu.html">
+    <ons-page id="init-menu">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center">初期設定メニュー</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <br />
+        <br />
+        <br />     
+        <p style="text-align: left;margin: 0px;font-size: 12px;">まず初めに行ってください</p>
+        <ons-button modifier="large" style="margin: 0px;" id="pop-button">建物の情報を登録する</ons-button>
+        <br />
+        <br />     
+        <p style="text-align: left;margin: 0px;font-size: 12px;">最大10件まで登録できます</p>
+        <ons-button modifier="large" id="pop-button">消火器の情報を登録する</ons-button>
+        <p style="text-align: right;margin: 0px;font-size: 12px;">現在n件登録済です</p>    
+      </div>
+    </ons-page>
+  </ons-template>
+  
+  <ons-template id="page3.html">
+    <ons-page id="third-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Page 1</ons-back-button></div>
+        <div class="center">Page 3</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>This is the third page.</p>
+        <ons-button id="pop-button">Pop page</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+    <ons-template id="page4.html">
+    <ons-page id="fourth-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Page 1</ons-back-button></div>
+        <div class="center">Page 4</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>This is the fourth page.</p>
+        <ons-button id="pop-button">Pop page</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+  
+    <ons-template id="page5.html">
+    <ons-page id="fifth-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Page 1</ons-back-button></div>
+        <div class="center">Page 5</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>This is the fifth page.</p>
+        <ons-button id="pop-button">Pop page</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+</body>
+</html>
